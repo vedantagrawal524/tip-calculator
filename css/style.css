@@ -8,21 +8,245 @@
 
 :root {
   --green-400: hsl(172, 67%, 45%);
+  --green-hover: hsl(172, 55%, 76%);
 
   --green-900: hsl(183, 100%, 15%);
   --grey-500: hsl(186, 14%, 43%);
   --grey-400: hsl(184, 14%, 56%);
+  --grey-300: hsl(185, 28%, 73%);
   --grey-200: hsl(185, 41%, 84%);
+  --grey-100: hsl(184, 60%, 91%);
   --grey-50: hsl(189, 47%, 97%);
   --white: hsl(0, 100%, 100%);
 }
 
 html {
   font-family: "Space Mono", monospace;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
 }
 
 body {
   background-color: var(--grey-200);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  padding: 2em;
+}
+
+.calculator {
+  max-width: 42em;
+  background-color: var(--grey-50);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 0.8em;
+  padding: 1em;
+  column-gap: 1em;
+  margin: 1em;
+}
+
+/* INPUT SECTION */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 1em;
+}
+
+.ip-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.7em;
+  color: var(--grey-500);
+  margin-bottom: 0.3em;
+}
+
+.ip,
+.custom {
+  width: 100%;
+  border: none;
+  background-color: var(--grey-100);
+  border-radius: 0.3em;
+  padding: 0.2em;
+  text-align: right;
+  color: var(--green-900);
+  transition: 200ms ease-in-out, box-shadow 200ms;
+}
+
+.custom {
+  text-align: center;
+  padding: 0.3em;
+}
+
+.ip::placeholder {
+  color: var(--grey-300);
+  text-align: right;
+}
+
+input:focus {
+  outline: 2px solid transparent;
+  box-shadow: 0px 0px 1px 2px var(--green-400);
+}
+
+input.error {
+  background-color: hsla(4, 55%, 85%, 0.4);
+  box-shadow: 0px 0px 1px 2px hsl(4, 100%, 67%);
+}
+
+.bill-error,
+.people-error {
+  color: hsl(4, 100%, 67%);
+}
+
+.hide {
+  display: none;
+}
+
+.tip-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.6em;
+}
+
+.tip-text {
+  font-size: 0.7em;
+  color: var(--grey-500);
+  margin-bottom: 0.5em;
+}
+
+.tip-button {
+  padding: 0.3em;
+  border: none;
+  background-color: var(--green-900);
+  color: var(--grey-50);
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+
+.tip-button:hover {
+  background-color: var(--green-hover);
+  color: var(--green-900);
+}
+
+.tip-button.active {
+  background-color: var(--green-hover);
+  color: var(--green-900);
+}
+
+.custom::placeholder {
+  color: var(--grey-400);
+  text-align: center;
+}
+
+.bill-box,
+.people-box {
+  position: relative;
+}
+
+.dollar,
+.people {
+  position: absolute;
+  left: 3%;
+  bottom: 25%;
+  width: 0.5em;
+  height: auto;
+}
+
+/* RESULT SECTION */
+.result-section {
+  background-color: var(--green-900);
+  padding: 1.5em;
+  border-radius: 0.8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: safe;
+}
+
+.tip-amt,
+.total-amt {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.total-amt {
+  margin-top: 1.2em;
+}
+
+.res-text {
+  align-self: center;
+}
+
+.res-text .title {
+  font-size: 0.8em;
+  color: var(--grey-50);
+}
+.res-text .person {
+  font-size: 0.6em;
+  color: var(--grey-400);
+}
+
+.tip,
+.total {
+  align-self: center;
+  font-size: 1.8em;
+  color: var(--green-400);
+}
+
+button,
+label,
+input {
+  font: inherit;
+  background-color: transparent;
+}
+
+.reset {
+  padding: 0.5em;
+  border-radius: 0.4em;
+  border: none;
+  outline: none;
+  background-color: var(--green-400);
+  color: var(--green-900);
+  margin-top: 4em;
+  cursor: pointer;
+}
+
+.reset:hover {
+  background-color: var(--green-hover);
+}
+
+@media screen and (max-width: 768px) {
+  .html {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 635px) {
+  html {
+    font-size: 15px;
+  }
+  .calculator {
+    grid-template-columns: 1fr;
+  }
+
+  .tip-options {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .reset {
+    margin-top: 2.5em;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 14px;
+  }
 }
