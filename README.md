@@ -28,7 +28,7 @@ The Tip Calculator allows users to:
 
 ### Screenshot
 
-#### 💻 Desktop View
+#### 💻 Desktop Active-state View
 
 ![Desktop Active-state Screenshot](./design/active-states.jpg)
 
