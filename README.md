@@ -1,1 +1,1 @@
-# Tip calculator app
+# Tip calculator
